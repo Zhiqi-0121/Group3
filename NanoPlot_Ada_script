@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#SBATCH --partition=defq
+...
+#SBATCH --mail-user=mbxsh12@exmail.nottingham.ac.uk
+
+# source your bash profile so you can use conda
+source $HOME/.bash_profile
+
+# activate conda environment
+conda activate nanoplot_env
+
+wd=/share/BioinfMSc #root working directory
+lrdir=$wd/Matt_resources/long_reads #path to long reads
+srdir=$wd/Matt_resources/short_reads #path to short reads
+gdir=$wd/rotation1/Group3 #path to group directory
+
+cat fastq_pass/barcode03/FAQ*_pass*.fastq.gz | gzip > 
+
+NanoPlot --$gdir/merged_pass.fastq.gz -o $gdir/qc_check_pass
+NanoPlot --$gdir/merged_fail.fastq.gz -o $gdir/qc_check_fail
+NanoPlot --$gdir/merged_fail.fastq.gz -o $gdir/qc_check_all
+
+# deactivate conda environment
+conda deactivate

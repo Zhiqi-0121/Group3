@@ -12,4 +12,8 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=pcytm7@exmail.nottingham.ac.uk
 
-cat /share/BioinfMSc/Matt_resources/short_reads/H????_S3_L00?_R?_001_fastqc.zip > /share/BioinfMSc/rotation1/Group3/short_merged_reads.gz
+#forwards read merging
+cat /share/BioinfMSc/Matt_resources/short_reads/H????_S3_L00?_R1_001_fastqc.zip > /share/BioinfMSc/rotation1/Group3/short_merged_reads_forward.gz
+
+#reverse read merging
+cat /share/BioinfMSc/Matt_resources/short_reads/H????_S3_L00?_R2_001_fastqc.zip > /share/BioinfMSc/rotation1/Group3/short_merged_reads_reverse.gz

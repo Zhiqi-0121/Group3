@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#SBATCH --partition=defq
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=5g
+#SBATCH --time=00:10:00
+#SBATCH --job-name=short_merge
+#SBATCH --output=/gpfs01/share/BioinfMSc/rotation1/Group3/slurm-%x-%j.out
+#SBATCH --error=/gpfs01/share/BioinfMSc/rotation1/Group3/slurm-%x-%j.err
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=pcytm7@exmail.nottingham.ac.uk
+
+cat /share/BioinfMSc/Matt_resources/short_reads/H????_S3_L00?_R?_001_fastqc.zip > /share/BioinfMSc/rotation1/Group3/short_merged_reads.gz

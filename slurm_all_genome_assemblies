@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#SBATCH --partition=defq
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=32
+#SBATCH --mem=10g
+#SBATCH --time=06:00:00
+#SBATCH --job-name=NanoPlot_Ada_Script_01
+#SBATCH --output=/gpfs01/home/mxsh12/slurm-%x-%j.out
+#SBATCH --error=/gpfs01/home/mxsh12/slurm-%x-%j.err
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=mbxsh12@exmail.nottingham.ac.uk
+
+# source your bash profile so you can use conda
+source $HOME/.bash_profile
+
+# activate conda environment
+conda activate Unicycler_env
+
+#definitions
+wd=/share/BioinfMSc #root working directory
+lrdir=$wd/Matt_resources/long_reads #path to long reads
+srdir=$wd/Matt_resources/short_reads #path to short reads
+gdir=$wd/rotation1/Group3 #path to group directory
+
+unicycler -l $gdir/merged_all.fastq.gz -o $gdir/genome_assembly_all
+conda deactivate
+

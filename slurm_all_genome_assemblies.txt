@@ -4,7 +4,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=32
-#SBATCH --mem=10g
+#SBATCH --mem=100g
 #SBATCH --time=06:00:00
 #SBATCH --job-name=NanoPlot_Ada_Script_01
 #SBATCH --output=/gpfs01/home/mxsh12/slurm-%x-%j.out
@@ -18,12 +18,19 @@ source $HOME/.bash_profile
 # activate conda environment
 conda activate Unicycler_env
 
+echo "Conda environment activated"
+
 #definitions
-wd=/share/BioinfMSc #root working directory
+wd=/share/BioinfMSc #root shared working directory
 lrdir=$wd/Matt_resources/long_reads #path to long reads
 srdir=$wd/Matt_resources/short_reads #path to short reads
-gdir=$wd/rotation1/Group3 #path to group directory
+gdir=$wd/rotation1/Group3 #path to group directory /share/BioinfMSc/rotation1/Group3
 
-unicycler -l $gdir/merged_all.fastq.gz -o $gdir/genome_assembly_all
+echo "Unicycler starting"
+
+unicycler -l $gdir/merged_all.fastq.gz -o $gdir/Genome_assemblies/genome_assembly_all
+
+echo "Unicycler finished"
+
 conda deactivate
 
